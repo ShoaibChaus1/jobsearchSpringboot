@@ -31,7 +31,7 @@ RUN mvn clean install
 FROM eclipse-temurin:17-jdk
 
 # Copy the JAR file from the build image
-COPY --from=build /target/*.jar app.jar
+COPY --from=build /target/JobSearchWebsite-0.0.1-SNAPSHOT.jar app.jar
 
 # Set the working directory
 WORKDIR /app
