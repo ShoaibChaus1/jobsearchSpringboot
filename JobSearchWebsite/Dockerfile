@@ -1,9 +1,21 @@
 
+#FROM maven:3.8.5-openjdk-17 AS build
+#COPY . .
+#RUN mvn clean package -DskipTests
+
+#FROM openjdk:17.0.1-jdk-slim
+#COPY --from=build /target/jobfind-0.0.1-SNAPSHOT.jar jobfind.jar
+#EXPOSE 8080
+#ENTRYPOINT ["java","-jar","jobfind.jar"]
+
+
 FROM maven:3.8.5-openjdk-17 AS build
+WORKDIR /src
 COPY . .
 RUN mvn clean package -DskipTests
 
 FROM openjdk:17.0.1-jdk-slim
-COPY --from=build /target/jobfind-0.0.1-SNAPSHOT.jar jobfind.jar
+WORKDIR /app
+COPY --from=build /app/target/JobSearchWebsite-0.0.1-SNAPSHOT.jar jobfind.jar
 EXPOSE 8080
 ENTRYPOINT ["java","-jar","jobfind.jar"]
