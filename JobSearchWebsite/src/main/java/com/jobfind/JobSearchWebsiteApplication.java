@@ -10,9 +10,8 @@ import com.jobfind.services.JobService;
 public class JobSearchWebsiteApplication {
 
 	public static void main(String[] args) {
-	ApplicationContext context=	SpringApplication.run(JobSearchWebsiteApplication.class, args);
-		JobService service=context.getBean(JobService.class);
-		System.out.println("Print");
+		SpringApplication.run(JobSearchWebsiteApplication.class, args);
+		
 		
 		//service.loadDataInPaginationByPageAndRows().forEach(System.out::println);
 	}
